@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:propertymanagmentapp/widgets/progress.dart';
 
+import 'today-task-screen.dart';
+
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
@@ -120,13 +122,13 @@ class _HomeViewState extends State<HomeView> {
                             child:
                                 Image.asset("assets/images/Image 1 (1).png"))),
                     Positioned(
-                        left: 60,
+                        left: 50,
                         top: 90,
                         child: CircleAvatar(
                             child:
                                 Image.asset("assets/images/Image 1 (1).png"))),
                     Positioned(
-                        left: 100,
+                        left: 80,
                         top: 90,
                         child: CircleAvatar(
                             child:
@@ -176,7 +178,13 @@ class _HomeViewState extends State<HomeView> {
                       width: 190,
                     ),
                     IconButton(
-                        onPressed: () {}, icon: const Icon(Icons.arrow_forward))
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Today_Task_Screen()));
+                        },
+                        icon: const Icon(Icons.arrow_forward))
                   ],
                 ),
               ),
@@ -195,24 +203,29 @@ class _HomeViewState extends State<HomeView> {
             ))
           ],
         )),
+        
       ]),
     );
   }
 }
 
-myTile(leading, title) {
-  return Container(
-    margin: EdgeInsets.symmetric(vertical: 8.0),
-    decoration: BoxDecoration(
-      border: Border.all(color: Colors.blue, width: 2),
-      borderRadius: BorderRadius.circular(8),
-    ),
-    child: ListTile(
-      leading: leading,
-      title: title,
-      onTap: () {
-        
-      },
+myTile(
+  leading,
+  title,
+) {
+  return Padding(
+    padding: const EdgeInsets.only(left: 5, right: 5, top: 5),
+    child: Container(
+      margin: EdgeInsets.symmetric(vertical: 8.0),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey, width: 2),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: ListTile(
+        leading: leading,
+        title: title,
+        onTap: () {},
+      ),
     ),
   );
 }

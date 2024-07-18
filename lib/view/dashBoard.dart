@@ -31,8 +31,8 @@ class _DashboardState extends State<Dashboard> {
                   children: [
                     myTile(Icon(Icons.create), Text("Create Task")),
                     myTile(Icon(Icons.add_home_work_rounded),Text("Create Project")),
-                    myTile(Icon(Icons.team), title),
-                    myTile(leading, title),
+                    myTile(Icon(Icons.people), Text("Create Team")),
+                    myTile(Icon(Icons.event), Text('Create Event')),
                   ],
                 );
               });

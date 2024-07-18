@@ -2,7 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 // import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:propertymanagmentapp/firebase_options.dart';
+import 'package:propertymanagmentapp/view/addTask.dart';
 import 'package:propertymanagmentapp/view/dashBoard.dart';
+import 'package:propertymanagmentapp/view/projects.dart';
 // import 'package:propertymanagmentapp/view/homeView.dart';
 // import 'package:propertymanagmentapp/view/splash.dart';
 
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Property Managment Application',
       debugShowCheckedModeBanner: false,
-      home: Dashboard(),
+      home: Add_Task(),
     );
   }
 }
