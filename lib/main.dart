@@ -1,20 +1,15 @@
 import 'package:firebase_core/firebase_core.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-// import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:propertymanagmentapp/firebase_options.dart';
-import 'package:propertymanagmentapp/view/addTask.dart';
-import 'package:propertymanagmentapp/view/dashBoard.dart';
-import 'package:propertymanagmentapp/view/projects.dart';
-// import 'package:propertymanagmentapp/view/homeView.dart';
-// import 'package:propertymanagmentapp/view/splash.dart';
-
-// import 'view/onBoarding_screen.dart';
+// import 'package:propertymanagmentapp/Models/provided_themes.dart';
+// import 'package:propertymanagmentapp/view/languages.dart';
+import 'package:propertymanagmentapp/view/splash.dart';
+// import 'package:provider/provider.dart';
 
 void main() async {
-  WidgetsFlutterBinding();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MyApp());
 }
 
@@ -23,10 +18,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final themeProvider = Provider.of<ThemeProvider>(context);
     return const MaterialApp(
+      // theme: themeProvider.themeData,
       title: 'Property Managment Application',
       debugShowCheckedModeBanner: false,
-      home: Add_Task(),
+      home: splash_view(),
     );
   }
 }

@@ -26,45 +26,65 @@ class _LoginPageState extends State<LoginPage> {
       UIHelper.showAlertDialog(
           context, "Incomplete Data", "Please fill all the fields");
     } else {
-      logIn(email, password);
+      // logIn(email, password);
+      _signIn();
     }
   }
 
-  void logIn(String email, String password) async {
-    UserCredential? credential;
+  // void logIn(String email, String password) async {
+  //   UserCredential? credential;
 
-    UIHelper.showLoadingDialog(context, "Logging In..");
+  //   UIHelper.showLoadingDialog(context, "Logging In..");
 
+  //   try {
+  //     credential = await FirebaseAuth.instance
+  //         .signInWithEmailAndPassword(email: email, password: password);
+  //     Navigator.push(
+  //         context, MaterialPageRoute(builder: (context) => HomeView()));
+  //   } on FirebaseAuthException catch (ex) {
+  //     // Close the loading dialog
+
+  //     // Show Alert Dialog
+  //     UIHelper.showAlertDialog(
+  //         context, "An error occured", ex.message.toString());
+  //   }
+
+  //   if (credential != null) {
+  //     String uid = credential.user!.uid;
+
+  //     DocumentSnapshot userData =
+  //         await FirebaseFirestore.instance.collection('users').doc(uid).get();
+  //     UserModel userModel =
+  //         UserModel.fromMap(userData.data() as Map<String, dynamic>);
+
+  //     // Go to HomePage
+  //     print("Log In Successful!");
+  //     // Navigator.popUntil(context, (route) => route.isFirst);
+  //     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+  //       return HomeView();
+  //       //    HomePage(
+  //       //       userModel: userModel, firebaseUser: credential!.user!);
+  //       // }),
+  //     }));
+  //   }
+  // }
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  Future<void> _signIn() async {
     try {
-      credential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
-    } on FirebaseAuthException catch (ex) {
-      // Close the loading dialog
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomeView()));
-
-      // Show Alert Dialog
-      UIHelper.showAlertDialog(
-          context, "An error occured", ex.message.toString());
-    }
-
-    if (credential != null) {
-      String uid = credential.user!.uid;
-
-      DocumentSnapshot userData =
-          await FirebaseFirestore.instance.collection('users').doc(uid).get();
-      UserModel userModel =
-          UserModel.fromMap(userData.data() as Map<String, dynamic>);
-
-      // Go to HomePage
-      print("Log In Successful!");
-      // Navigator.popUntil(context, (route) => route.isFirst);
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return HomeView();
-        //    HomePage(
-        //       userModel: userModel, firebaseUser: credential!.user!);
-        // }),
-      }));
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      // Navigate to another screen if needed
+      setState(() {
+        // _errorMessage = 'Login successful!';
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HomeView()));
+      });
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        // _errorMessage = e.message!;
+      });
     }
   }
 
@@ -130,7 +150,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 CupertinoButton(
                   onPressed: () {
-                    checkValues();
+                    // checkValues();
+                    _signIn();
                   },
                   color: Theme.of(context).colorScheme.secondary,
                   child: Text("Log In"),

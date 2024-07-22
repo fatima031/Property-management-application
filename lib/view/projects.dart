@@ -54,6 +54,7 @@ class _ProjectsState extends State<Projects> {
             padding: EdgeInsets.all(10),
             child: TextField(
               decoration: InputDecoration(
+                icon: Icon(Icons.search),
                 border: OutlineInputBorder(),
                 hintText: 'Search here',
               ),

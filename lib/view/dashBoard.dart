@@ -14,7 +14,7 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  Widget currentScreen = const HomeView();
+  Widget currentScreen = const Dashboard();
   int activeTab = 0;
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,8 @@ class _DashboardState extends State<Dashboard> {
                 return Column(
                   children: [
                     myTile(Icon(Icons.create), Text("Create Task")),
-                    myTile(Icon(Icons.add_home_work_rounded),Text("Create Project")),
+                    myTile(Icon(Icons.add_home_work_rounded),
+                        Text("Create Project")),
                     myTile(Icon(Icons.people), Text("Create Team")),
                     myTile(Icon(Icons.event), Text('Create Event')),
                   ],
@@ -56,7 +57,7 @@ class _DashboardState extends State<Dashboard> {
                 },
                 child: Icon(
                   Icons.home,
-                  color: activeTab == 0 ? Colors.blue : Colors.black,
+                  color: activeTab == 1 ? Colors.blue : Colors.black,
                 ),
               ),
               MaterialButton(
@@ -69,7 +70,7 @@ class _DashboardState extends State<Dashboard> {
                 },
                 child: Icon(
                   Icons.work,
-                  color: activeTab == 1 ? Colors.blue : Colors.black,
+                  color: activeTab == 2 ? Colors.blue : Colors.black,
                 ),
               ),
               MaterialButton(
@@ -82,7 +83,7 @@ class _DashboardState extends State<Dashboard> {
                 },
                 child: Icon(
                   Icons.chat,
-                  color: activeTab == 2 ? Colors.blue : Colors.black,
+                  color: activeTab == 3 ? Colors.blue : Colors.black,
                 ),
               ),
               MaterialButton(
@@ -93,10 +94,6 @@ class _DashboardState extends State<Dashboard> {
                     currentScreen = const Profile();
                   });
                 },
-                child: Icon(
-                  Icons.person,
-                  color: activeTab == 3 ? Colors.blue : Colors.black,
-                ),
               ),
             ],
           ),

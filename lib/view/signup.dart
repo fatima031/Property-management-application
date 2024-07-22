@@ -43,7 +43,8 @@ class _SignUpPageState extends State<SignUpPage> {
       credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (ex) {
-      Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginPage()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => LoginPage()));
 
       UIHelper.showAlertDialog(
           context, "An error occured", ex.message.toString());
@@ -67,8 +68,8 @@ class _SignUpPageState extends State<SignUpPage> {
         //     //  CompleteProfile(userModel: newUser, firebaseUser: credential!.user!);
         //   }),
         // );
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) =>const LoginPage()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const LoginPage()));
       });
     }
   }
@@ -77,6 +78,8 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         centerTitle: true,
         title: const Text("SignUp"),
       ),
@@ -87,20 +90,19 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           child: Column(
             children: [
-        const      Text(
+              const Text(
                 "Creating Account",
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 35,
                     fontWeight: FontWeight.bold),
               ),
-       const       SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                          
                   "Please create you account for continue...",
                   style: TextStyle(
                       color: Colors.grey,
@@ -108,36 +110,34 @@ class _SignUpPageState extends State<SignUpPage> {
                       fontWeight: FontWeight.normal),
                 ),
               ),
-           const   SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               TextField(
                 controller: emailController,
                 decoration: const InputDecoration(
-                  hintText: 'Email Address',
-                  labelText: "Email Address"),
+                    hintText: 'Email Address', labelText: "Email Address"),
               ),
-const              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               TextField(
                 controller: passwordController,
                 obscureText: true,
                 decoration: const InputDecoration(
-                  hintText: 'Password',
-                  labelText: "Password"),
+                    hintText: 'Password', labelText: "Password"),
               ),
-           const   SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               TextField(
                 controller: cPasswordController,
                 obscureText: true,
                 decoration: const InputDecoration(
-                  hintText: 'Confirm Password',
-                  labelText: "Confirm Password"),
+                    hintText: 'Confirm Password',
+                    labelText: "Confirm Password"),
               ),
-           const   SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               CupertinoButton(
@@ -151,11 +151,11 @@ const              SizedBox(
           ),
         ),
       ),
-      bottomNavigationBar:  Container(
+      bottomNavigationBar: Container(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-          const  Text(
+            const Text(
               "Already have an account?",
               style: TextStyle(fontSize: 16),
             ),
